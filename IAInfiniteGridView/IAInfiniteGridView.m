@@ -181,6 +181,10 @@
 }
 
 - (void)tileGridsFromMinX:(CGFloat)minimumVisibleX toMaxX:(CGFloat)maximumVisibleX {
+    if ([self.dataSource numberOfInfiniteGrids] == 0) {
+        return;
+    }
+    
     if ([self.visibleGrids count] == 0) {
         [self placeNewGridOnRight:minimumVisibleX];
     }
