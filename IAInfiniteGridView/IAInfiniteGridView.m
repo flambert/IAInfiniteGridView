@@ -52,12 +52,26 @@
     return self;
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    
+    if ((newSuperview != nil)) {
+        [self reloadData];
+    }
+}
+
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    [self reloadData];
+}
+
+- (void)reloadData {
     CGSize gridSize = [self.dataSource infiniteGridSize];
     NSUInteger totalGrids = [self.dataSource numberOfInfiniteGrids];
     self.contentSize = CGSizeMake(5 * totalGrids * gridSize.width, gridSize.height);
     
     self.containerView.frame = CGRectMake(0, 0, self.contentSize.width, self.contentSize.height);
+    [self jumpToIndex:self.currentIndex];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {

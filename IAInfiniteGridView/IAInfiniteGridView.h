@@ -31,6 +31,7 @@
 @property (nonatomic, assign) IBOutlet id<IAInfiniteGridDataSource> dataSource;
 @property (nonatomic, assign) IBOutlet id<IAInfiniteGridDelegate> gridDelegate;
 
+- (void)reloadData;
 - (id)dequeueReusableGrid;
 - (void)jumpToIndex:(NSInteger)gridIndex;
 - (UIView *)gridViewAtPoint:(CGPoint)point;
