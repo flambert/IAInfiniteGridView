@@ -97,7 +97,9 @@
     CGFloat minimumVisibleX = CGRectGetMinX(visibleBounds);
     CGFloat maximumVisibleX = CGRectGetMaxX(visibleBounds);
     
+    NSArray *grids = self.visibleGrids;
     [self.visibleGrids removeAllObjects];
+    [self.gridReusableQueue addObjectsFromArray:grids];
     self.currentIndex = gridIndex;
     
     [self tileGridsFromMinX:minimumVisibleX toMaxX:maximumVisibleX];
