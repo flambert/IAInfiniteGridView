@@ -105,6 +105,16 @@
     [self tileGridsFromMinX:minimumVisibleX toMaxX:maximumVisibleX];
 }
 
+- (void)setCurrentIndex:(NSInteger)currentIndex {
+    if (_currentIndex != currentIndex) {
+        _currentIndex = currentIndex;
+        
+        if (self.gridDelegate && [self.gridDelegate respondsToSelector:@selector(infiniteGridView:gridIndexDidChange:)]) {
+            [self.gridDelegate infiniteGridView:self gridIndexDidChange:self.currentIndex];
+        }
+    }
+}
+
 - (id)dequeueReusableGrid {
     id grid = [self.gridReusableQueue lastObject];
     [self.gridReusableQueue removeObject:grid];
