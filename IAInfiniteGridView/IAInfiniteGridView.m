@@ -99,6 +99,7 @@
     
     NSArray *grids = self.visibleGrids;
     [self.visibleGrids removeAllObjects];
+    [self.containerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.gridReusableQueue addObjectsFromArray:grids];
     self.currentIndex = gridIndex;
     
